@@ -21,6 +21,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "1-springboot" do |machine|
     machine.vm.box = machine_box
     machine.vm.network "private_network", ip: "192.168.52.11"
+    machine.vm.network "forwarded_port", guest: 7896, host: 7896
     machine.vm.provision "shell" do |s|
       s.inline = "echo '192.168.52.1 artifactory' >> /etc/hosts"
     end
